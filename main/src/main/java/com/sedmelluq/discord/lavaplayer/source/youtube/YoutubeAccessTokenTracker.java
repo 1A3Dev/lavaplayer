@@ -62,7 +62,7 @@ public class YoutubeAccessTokenTracker {
     private long lastAccessTokenUpdate;
     private long lastVisitorIdUpdate;
     private long accessTokenRefreshInterval = DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL;
-    private boolean loggedAgeRestrictionsWarning = false;
+    private boolean loggedAgeRestrictionsWarning = true;
     private boolean masterTokenFromTV = false;
     private volatile CachedAuthScript cachedAuthScript = null;
 
@@ -159,14 +159,9 @@ public class YoutubeAccessTokenTracker {
             }
 
             lastVisitorIdUpdate = now;
-            log.info("Updating YouTube visitor id (current is {}).", visitorId);
 
             try {
                 visitorId = fetchVisitorId();
-                log.info("Updating YouTube visitor id succeeded, new one is {}, next update will be after {} seconds.",
-                    visitorId,
-                    TimeUnit.MILLISECONDS.toSeconds(VISITOR_ID_REFRESH_INTERVAL)
-                );
             } catch (Exception e) {
                 log.error("YouTube visitor id update failed.", e);
             }
