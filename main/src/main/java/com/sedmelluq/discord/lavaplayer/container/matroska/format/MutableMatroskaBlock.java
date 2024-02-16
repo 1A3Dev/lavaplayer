@@ -3,6 +3,7 @@ package com.sedmelluq.discord.lavaplayer.container.matroska.format;
 import java.io.DataInput;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.Buffer;
 
 /**
  * An implementation of {@link MatroskaBlock} which can be reused by loading the next block into it by calling
@@ -53,7 +54,7 @@ public class MutableMatroskaBlock implements MatroskaBlock {
 
         reader.getDataInput().readFully(bufferArray, 0, frameSize);
 
-        buffer.position(0);
+        ((Buffer) buffer).position(0);
         buffer.limit(frameSize);
         return buffer;
     }
