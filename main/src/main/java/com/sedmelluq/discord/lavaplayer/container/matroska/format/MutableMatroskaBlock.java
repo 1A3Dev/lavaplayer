@@ -49,7 +49,7 @@ public class MutableMatroskaBlock implements MatroskaBlock {
 
         if (buffer == null || frameSize > buffer.capacity()) {
             buffer = ByteBuffer.allocate(frameSizes[index] * 2);
-            bufferArray = buffer.array();
+            bufferArray = ((Buffer) buffer).array();
         }
 
         reader.getDataInput().readFully(bufferArray, 0, frameSize);
