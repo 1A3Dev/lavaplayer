@@ -55,7 +55,7 @@ public class MutableMatroskaBlock implements MatroskaBlock {
         reader.getDataInput().readFully(bufferArray, 0, frameSize);
 
         ((Buffer) buffer).position(0);
-        buffer.limit(frameSize);
+        ((Buffer) buffer).limit(frameSize);
         return buffer;
     }
 
