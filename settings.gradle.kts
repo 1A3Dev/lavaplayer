@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 }
 
 fun VersionCatalogBuilder.plugins() {
-    val mavenPublishPlugin = version("maven-publish-plugin", "0.25.3")
+    val mavenPublishPlugin = version("maven-publish-plugin", "0.32.0")
 
     plugin("maven-publish", "com.vanniktech.maven.publish").versionRef(mavenPublishPlugin)
     plugin("maven-publish-base", "com.vanniktech.maven.publish.base").versionRef(mavenPublishPlugin)
@@ -36,6 +36,7 @@ fun VersionCatalogBuilder.plugins() {
 fun VersionCatalogBuilder.common() {
     library("slf4j", "org.slf4j", "slf4j-api").version("2.0.7")
     library("commons-io", "commons-io", "commons-io").version("2.13.0")
+    library("intellij-annotations", "org.jetbrains", "annotations").version("24.0.0")
 
     version("jackson", "2.15.2")
     library("jackson-core", "com.fasterxml.jackson.core", "jackson-core").versionRef("jackson")
@@ -50,7 +51,6 @@ fun VersionCatalogBuilder.common() {
 
 fun VersionCatalogBuilder.others() {
     library("ibxm-fork", "com.github.walkyst", "ibxm-fork").version("a75")
-    library("jaadec-fork", "com.github.walkyst", "JAADec-fork").version("0.1.3")
     library("rhino-engine", "org.mozilla", "rhino-engine").version("1.7.14")
 }
 
